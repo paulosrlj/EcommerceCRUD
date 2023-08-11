@@ -1,5 +1,5 @@
 ﻿using EcommerceCRUD.Database;
-using EcommerceCRUD.Entities;
+using EcommerceCRUD.Models.DTO.Entities;
 
 namespace EcommerceCRUD.Repositories
 {

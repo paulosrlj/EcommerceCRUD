@@ -1,4 +1,4 @@
-﻿using EcommerceCRUD.Entities;
+﻿using EcommerceCRUD.Models.DTO.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 

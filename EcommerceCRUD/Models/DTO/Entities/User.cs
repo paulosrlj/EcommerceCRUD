@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EcommerceCRUD.Entities
+namespace EcommerceCRUD.Models.DTO.Entities
 {
     [Table("Users")]
     public class User
@@ -11,15 +11,15 @@ namespace EcommerceCRUD.Entities
 
         [Column("Name", TypeName = "nvarchar")]
         [MaxLength(80)]
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [Column("Email", TypeName = "nvarchar")]
         [MaxLength(80)]
-        public String Email { get; set; }
+        public string Email { get; set; }
 
         [Column("HashedPassword", TypeName = "nvarchar")]
         [MaxLength(80)]
-        public String HashedPassword { get; set; }
+        public string HashedPassword { get; set; }
 
     }
 }
