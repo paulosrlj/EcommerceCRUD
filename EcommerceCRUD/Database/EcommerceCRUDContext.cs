@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EcommerceCRUD.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace EcommerceCRUD.Database
@@ -8,9 +9,10 @@ namespace EcommerceCRUD.Database
         public EcommerceCRUDContext(DbContextOptions<EcommerceCRUDContext> options)
         : base
             (options)
-        {
+        {}
 
-        }
+        public DbSet<User> Users { get; set; }
+        
     }
 }
 

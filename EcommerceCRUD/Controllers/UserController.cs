@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EcommerceCRUD.Entities;
+using EcommerceCRUD.Models.DTO.Input;
+using EcommerceCRUD.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceCRUD.Controllers
@@ -7,11 +10,18 @@ namespace EcommerceCRUD.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly UserRepository _userRepository;
 
-        [HttpGet]
-        public String Create()
+        public UserController(UserRepository userRepository)
         {
-            return "Hello World";
+            _userRepository = userRepository;
+        }
+
+        [HttpPost]
+        public async Task<User> Create([FromBody] InputUser user)
+        {
+            var userCreated = await _userRepository.Create(InputUser.MapUserDtoToUser(user));
+            return userCreated;
         }
     }
 }

@@ -1,4 +1,6 @@
 using EcommerceCRUD.Database;
+using EcommerceCRUD.Repositories;
+using EcommerceCRUD.Services;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -19,6 +21,9 @@ builder.Services.AddDbContext<EcommerceCRUDContext>(opts =>
 
 // Add controllers
 builder.Services.AddControllers();
+
+builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<UserService>();
 
 var app = builder.Build();
 
