@@ -28,7 +28,7 @@ jobs:
       run: dotnet build ./EcommerceCRUD.sln --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
 
     - name: Publish
       run: dotnet publish ./EcommerceCRUD.sln --configuration Release --no-build
