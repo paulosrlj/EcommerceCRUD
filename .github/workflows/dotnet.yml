@@ -10,7 +10,7 @@ on:
     - master
 
 env:
-  AZURE_WEBAPP_NAME: Ecommerce-CI-CD-Test
+  AZURE_WEBAPP_NAME: EcommerceTestCiCd
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
