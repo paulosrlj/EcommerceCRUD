@@ -1,10 +1,11 @@
 ﻿using EcommerceCRUD.Database;
 using EcommerceCRUD.Models.DTO.Entities;
+using EcommerceCRUD.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceCRUD.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly EcommerceCRUDContext _ctx;
 

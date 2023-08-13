@@ -1,6 +1,7 @@
 ﻿using EcommerceCRUD.Models.DTO.Input;
 using EcommerceCRUD.Models.DTO.Output;
 using EcommerceCRUD.Repositories;
+using EcommerceCRUD.Repositories.Interfaces;
 using EcommerceCRUD.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,12 +11,10 @@ namespace EcommerceCRUD.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserRepository _userRepository;
         private readonly IUserService _userService;
 
-        public UserController(UserRepository userRepository, IUserService userService)
+        public UserController(IUserService userService)
         {
-            _userRepository = userRepository;
             _userService = userService;
         }
 
@@ -35,12 +34,12 @@ namespace EcommerceCRUD.Controllers
                 return BadRequest(ModelState);
             }
 
-            var userCreated = await _userRepository.Create(InputUser.MapUserDtoToUser(user));
+            var userCreated = await _userService.Create(InputUser.MapUserDtoToUser(user));
             return Ok(new ResponseObject(200, OutputUser.MapUserToUserOutput(userCreated)));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(String id, [FromBody] InputUser user)
+        public async Task<IActionResult> Update(string id, [FromBody] InputUser user)
         {
             if (!ModelState.IsValid)
             {
@@ -52,7 +51,7 @@ namespace EcommerceCRUD.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(String id)
+        public async Task<IActionResult> Delete(string id)
         {
             await _userService.Delete(id);
             return Ok();

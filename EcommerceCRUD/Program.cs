@@ -1,5 +1,6 @@
 using EcommerceCRUD.Database;
 using EcommerceCRUD.Repositories;
+using EcommerceCRUD.Repositories.Interfaces;
 using EcommerceCRUD.Services;
 using EcommerceCRUD.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ builder.Services.AddDbContext<EcommerceCRUDContext>(opts =>
 // Add controllers
 builder.Services.AddControllers();
 
-builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
